@@ -13,8 +13,12 @@ export default function ProjectList({ projects, isFiltered }) {
 
   return (
     <ul className="project-list" aria-label="Project list">
-      {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
+      {projects.map((project, index) => (
+        <ProjectCard
+          key={project.id}
+          project={project}
+          style={{ "--item-index": index }}
+        />
       ))}
     </ul>
   );

@@ -1,4 +1,4 @@
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, style }) {
   const initials = project.title
     .split(/\s+/)
     .slice(0, 2)
@@ -7,7 +7,7 @@ export default function ProjectCard({ project }) {
     .toUpperCase();
 
   return (
-    <li className="project-card">
+    <li className="project-card" style={style}>
       <div className="thumb" aria-hidden="true">{initials}</div>
       <div className="project-text">
         <h3>{project.title}</h3>

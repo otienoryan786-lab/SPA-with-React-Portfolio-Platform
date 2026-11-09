@@ -32,22 +32,26 @@ export default function ProjectForm({ onAddProject }) {
           id="project-title"
           type="text"
           value={title}
+          aria-describedby="project-title-count"
           onChange={(event) => {
             setTitle(event.target.value);
             setError("");
           }}
           maxLength={100}
         />
+        <p className="character-count" id="project-title-count">{title.length}/100</p>
         <label htmlFor="project-description">Description</label>
         <textarea
           id="project-description"
           value={description}
+          aria-describedby="project-description-count"
           onChange={(event) => {
             setDescription(event.target.value);
             setError("");
           }}
           maxLength={500}
         />
+        <p className="character-count" id="project-description-count">{description.length}/500</p>
         {error && <p className="form-error" role="alert">{error}</p>}
         <button className="btn" type="submit">Add project</button>
       </form>

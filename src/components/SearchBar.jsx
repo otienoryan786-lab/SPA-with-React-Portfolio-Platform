@@ -11,6 +11,16 @@ export default function SearchBar({ query, onQueryChange }) {
         value={query}
         onChange={(event) => onQueryChange(event.target.value)}
       />
+      {query && (
+        <button
+          className="clear-search"
+          type="button"
+          aria-label="Clear search"
+          onClick={() => onQueryChange("")}
+        >
+          Clear
+        </button>
+      )}
     </div>
   );
 }

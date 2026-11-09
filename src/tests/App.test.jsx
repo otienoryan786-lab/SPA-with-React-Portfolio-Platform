@@ -43,6 +43,19 @@ test("searches titles and descriptions without case sensitivity", async () => {
   expect(screen.getByText("Kijani Farms Website")).toBeInTheDocument();
 });
 
+test("sorts projects alphabetically and clears a search", async () => {
+  const user = userEvent.setup();
+  render(<App />);
+
+  await user.selectOptions(screen.getByRole("combobox", { name: "Sort projects" }), "title");
+  expect(screen.getAllByRole("listitem")[0]).toHaveTextContent("City Arts Festival Campaign");
+
+  await user.type(screen.getByRole("searchbox", { name: "Search projects" }), "Kijani");
+  await user.click(screen.getByRole("button", { name: "Clear search" }));
+
+  expect(screen.getAllByRole("listitem")).toHaveLength(3);
+});
+
 test("shows a clear message when no projects match", async () => {
   const user = userEvent.setup();
   render(<App />);
